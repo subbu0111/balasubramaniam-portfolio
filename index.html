@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Balasubramaniam Satyamoorthy — Lead Consultant</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0a'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='14' fill='%23e8ff00' letter-spacing='-1'>BS</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f0;
+    --accent: #e8ff00;
+    --red: #ff2d00;
+    --gray: #888;
+    --mid: #1c1c1c;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+    mix-blend-mode: difference;
+  }
+
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 20vw, 260px);
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -5px;
+    line-height: 0.85;
+    user-select: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 140px);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-name span { color: var(--accent); }
+
+  .hero-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 400;
+    color: var(--gray);
+    max-width: 680px;
+    line-height: 1.3;
+    margin-bottom: 48px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 56px;
+  }
+  .stat-item {}
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-number span { color: var(--accent); }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    padding: 16px 40px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--white); }
+
+  .btn-ghost {
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+  .hero-scroll {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-scroll span {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: var(--gray);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.5); }
+  }
+
+  /* SECTION BASE */
+  section { padding: 120px 48px; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 100px);
+    line-height: 0.9;
+    color: var(--white);
+    margin-bottom: 64px;
+    letter-spacing: -1px;
+  }
+
+  /* MARQUEE DIVIDER */
+  .marquee-bar {
+    background: var(--accent);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-block;
+    animation: marquee 18s linear infinite;
+  }
+  .marquee-inner span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 6px;
+    color: var(--black);
+    margin-right: 60px;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--mid);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-left {}
+  .about-right {}
+
+  .about-body {
+    font-size: 17px;
+    line-height: 1.85;
+    color: rgba(245,245,240,0.7);
+    font-weight: 300;
+  }
+  .about-body strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .about-highlight {
+    border-left: 3px solid var(--accent);
+    padding-left: 28px;
+    margin: 48px 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .cert-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    margin: 6px 6px 0 0;
+  }
+
+  /* WHAT I DELIVER */
+  #deliver { background: var(--black); }
+
+  .deliver-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .deliver-card {
+    background: var(--mid);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .deliver-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .deliver-card:hover { background: #242424; }
+  .deliver-card:hover::before { width: 100%; }
+
+  .card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: 20px; right: 24px;
+    line-height: 1;
+  }
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .card-body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--mid); }
+
+  .exp-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 40px;
+  }
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), rgba(232,255,0,0.1));
+  }
+
+  .exp-item {
+    position: relative;
+    padding: 0 0 56px 48px;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  .exp-item:hover::before {
+    transform: scale(1.6);
+  }
+
+  .exp-inner {
+    background: var(--black);
+    padding: 36px 40px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .exp-item:hover .exp-inner {
+    border-left-color: var(--accent);
+    background: #111;
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .exp-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+  }
+  .exp-badge {
+    background: rgba(232,255,0,0.08);
+    border: 1px solid rgba(232,255,0,0.2);
+    color: var(--accent);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .exp-meta {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .exp-company {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .exp-period {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .exp-period::before {
+    content: '·';
+    margin-right: 20px;
+    color: rgba(255,255,255,0.15);
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(245,245,240,0.65);
+    font-weight: 300;
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+  .exp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .exp-pill {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 4px 10px;
+  }
+
+  /* METRICS */
+  .metrics-section {
+    background: var(--accent);
+    padding: 80px 48px;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .metric-item { text-align: center; }
+  .metric-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--black);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    margin-top: 8px;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--black); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .skill-category-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    background: var(--accent);
+    color: var(--black);
+    border-color: var(--accent);
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--mid); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .project-card {
+    background: var(--black);
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { transform: translateY(-4px); }
+  .project-card::after {
+    content: '→';
+    position: absolute;
+    bottom: 40px; right: 40px;
+    font-size: 28px;
+    color: rgba(255,255,255,0.1);
+    transition: all 0.3s;
+  }
+  .project-card:hover::after {
+    color: var(--accent);
+    transform: translateX(6px);
+  }
+  .project-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 100px;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    top: 10px; right: 20px;
+    line-height: 1;
+  }
+  .project-type {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  .project-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+    max-width: 400px;
+  }
+  .project-stack {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .stack-pill {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 4px 10px;
+  }
+
+  .project-live-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232,255,0,0.3);
+    padding-bottom: 3px;
+    transition: border-color 0.2s, letter-spacing 0.2s;
+  }
+  .project-live-link:hover {
+    border-color: var(--accent);
+    letter-spacing: 4px;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications { background: var(--black); }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .cert-card {
+    background: var(--mid);
+    padding: 32px 36px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+  }
+  .cert-card:hover {
+    border-left-color: var(--accent);
+    background: #242424;
+  }
+  .cert-issuer {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .cert-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .cert-date {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--black);
+    text-align: center;
+    padding: 160px 48px;
+  }
+  .contact-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 160px);
+    line-height: 0.85;
+    color: var(--white);
+    margin-bottom: 40px;
+    letter-spacing: -3px;
+  }
+  .contact-title span { color: var(--accent); }
+  .contact-sub {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 56px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 6px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    background: var(--mid);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 2px;
+  }
+  .footer-loc {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.animate-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .hero { padding: 0 24px 60px; }
+    #about { grid-template-columns: 1fr; gap: 40px; }
+    .deliver-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .exp-badge { display: none; }
+    .exp-timeline { padding-left: 24px; }
+    .metrics-grid { grid-template-columns: repeat(2,1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .hero-stats { gap: 32px; flex-wrap: wrap; }
+    .contact-links { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#deliver">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">SATISH</div>
+  <div class="hero-eyebrow">Lead Consultant · GenAI &amp; Automation · Hyderabad, India</div>
+  <h1 class="hero-name">BALASUBRAMANIAM<br><span>SATYAMOORTHY</span></h1>
+  <p class="hero-tagline">GenAI &amp; Automation Mentor — steering teams toward ROI-focused AI implementation and operational excellence.</p>
+  <div class="hero-cta">
+    <a href="#contact" class="btn-primary">Get in Touch</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>GenAI &amp; Automation</span>
+    <span>Agentic AI Systems</span>
+    <span>Multi-Agent Frameworks</span>
+    <span>RAG Engineering</span>
+    <span>Enterprise Delivery</span>
+    <span>Operational Excellence</span>
+    <span>Telecom &amp; Contact Center</span>
+    <span>GenAI &amp; Automation</span>
+    <span>Agentic AI Systems</span>
+    <span>Multi-Agent Frameworks</span>
+    <span>RAG Engineering</span>
+    <span>Enterprise Delivery</span>
+    <span>Operational Excellence</span>
+    <span>Telecom &amp; Contact Center</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">WHERE STRATEGY<br>MEETS<br>EXECUTION.</h2>
+    <div style="margin-top:16px;">
+      <span class="cert-tag">GALaxis Mentor</span>
+      <span class="cert-tag">Hyderabad, India</span>
+    </div>
+  </div>
+  <div class="about-right">
+    <p class="about-body">
+      <strong>16+ years in project and operations delivery</strong> — spanning telecom, contact center, software delivery, and enterprise IT. I'm a GenAI &amp; Automation Consultant who suggests solutions and builds systems.
+    </p>
+    <div class="about-highlight">
+      "I target high-volume, low-variability processes and push for simplicity over hype."
+    </div>
+    <p class="about-body">
+      I bridge technical, business, and financial perspectives — a trusted advisor on risk, cost, and delivery trade-offs with a track record of <strong>building and mentoring high-performing teams</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- WHAT I DELIVER -->
+<section id="deliver">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">WHAT I<br>DELIVER.</h2>
+  <div class="deliver-grid">
+    <div class="deliver-card fade-up">
+      <div class="card-num">01</div>
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Enterprise AI Consulting</div>
+      <div class="card-body">Designed and deployed rule-based automation, workflow optimization, and AI-assist use cases built for production. Targeting high-volume, low-variability processes with measurable ROI.</div>
+    </div>
+    <div class="deliver-card fade-up">
+      <div class="card-num">02</div>
+      <div class="card-icon">🧠</div>
+      <div class="card-title">Generative AI &amp; RAG</div>
+      <div class="card-body">Built fully on-premise RAG applications with Ollama for local LLM inference, ChromaDB vector store, and OpenAI embeddings — zero cloud data exposure. Accurate, context-aware responses for complex support queries.</div>
+    </div>
+    <div class="deliver-card fade-up">
+      <div class="card-num">03</div>
+      <div class="card-icon">🤖</div>
+      <div class="card-title">Agentic AI &amp; Multi-Agent</div>
+      <div class="card-body">Architected and deployed live autonomous AI agents powered by self-built multi-agent frameworks routing across models. Implemented context trimming for API cost control on self-hosted infrastructure.</div>
+    </div>
+    <div class="deliver-card fade-up">
+      <div class="card-num">04</div>
+      <div class="card-icon">📡</div>
+      <div class="card-title">Technology Leadership</div>
+      <div class="card-body">Hands-on expertise across network infrastructure, application development, and system integration — Nokia MSS/MGW/HLR, Siemens, Huawei, Jira, Wireshark, Perl, and telecom core systems.</div>
+    </div>
+    <div class="deliver-card fade-up">
+      <div class="card-num">05</div>
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Delivery Excellence</div>
+      <div class="card-body">Managed 10–12 live infrastructure projects simultaneously. Zero escalations. Every project delivered on time and on budget. Lean practices introduced — on-time delivery up 23% in three months.</div>
+    </div>
+    <div class="deliver-card fade-up">
+      <div class="card-num">06</div>
+      <div class="card-icon">📊</div>
+      <div class="card-title">Governance &amp; Compliance</div>
+      <div class="card-body">Supervised network performance KPIs and supported TRAI and CMTS audits with full compliance and service quality accountability. Deep familiarity with TCCCPR regulatory frameworks.</div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics-section">
+  <div class="metrics-grid">
+    <div class="metric-item">
+      <div class="metric-num">88</div>
+      <div class="metric-label">Client NPS Score</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">23%</div>
+      <div class="metric-label">On-Time Delivery Uplift</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">27</div>
+      <div class="metric-label">Projects Delivered</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-num">55</div>
+      <div class="metric-label">Team NPS (from 38)</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">16+ YEARS.<br>ONE THREAD.</h2>
+  <div class="exp-timeline">
+
+    <div class="exp-item fade-up">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-role">Lead Consultant — GenAI &amp; Automation</div>
+          <div class="exp-badge">Current</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-company">Infosys TOPAZ</div>
+          <div class="exp-period">Nov 2025 — Present</div>
+        </div>
+        <p class="exp-desc">Driving AI &amp; Automation strategy as a GALaxis Automation Mentor — decoding survey signals, identifying overrun drivers, and steering account teams toward ROI-focused GenAI implementation. Certified Gen AI Professional operating at the intersection of enterprise delivery and emerging AI systems.</p>
+        <div class="exp-pills">
+          <div class="exp-pill">GALaxis Mentor</div>
+          <div class="exp-pill">GenAI Strategy</div>
+          <div class="exp-pill">ROI Automation</div>
+          <div class="exp-pill">Stakeholder Advisory</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-role">Lead Consultant — Information Experience, Analytics &amp; Digital</div>
+          <div class="exp-badge">Leadership</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-company">Infosys</div>
+          <div class="exp-period">Sep 2020 — Nov 2025 · 5 yrs</div>
+        </div>
+        <p class="exp-desc">Led cross-functional initiatives across Information Experience, IXD, Analytics, and Digital domains — ensuring 100% alignment with strategic release plans and client deadlines. Drove stakeholder management, R&amp;D, and multi-skill team delivery across enterprise accounts.</p>
+        <div class="exp-pills">
+          <div class="exp-pill">Stakeholder Management</div>
+          <div class="exp-pill">R&amp;D Management</div>
+          <div class="exp-pill">Analytics</div>
+          <div class="exp-pill">Digital Transformation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-role">Scrum Master</div>
+          <div class="exp-badge">Agile</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-company">Infosys</div>
+          <div class="exp-period">Dec 2019 — Aug 2020 · 9 mos</div>
+        </div>
+        <p class="exp-desc">Catalysed Agile adoption across a high-performing engineering team — guided the transition to Scrum methodologies, implemented mentoring workflows, and drove measurable improvements in productivity and delivery speed.</p>
+        <div class="exp-pills">
+          <div class="exp-pill">Scrum</div>
+          <div class="exp-pill">CSM</div>
+          <div class="exp-pill">Agile Coaching</div>
+          <div class="exp-pill">Sprint Planning</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-role">Project Manager — Infrastructure &amp; Delivery</div>
+          <div class="exp-badge">Delivery</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-company">Infosys</div>
+          <div class="exp-period">Dec 2016 — Nov 2019 · 3 yrs</div>
+        </div>
+        <p class="exp-desc">Managed high-value infrastructure portfolios — handled 10–12 concurrent complex projects valued at $1–4M AUD for Enterprise and Premium clients. Zero escalations. Every project delivered on time and on budget. Introduced Lean practices that moved on-time delivery up 23% in three months and grew team NPS from 38 to 55 in under eight months.</p>
+        <div class="exp-pills">
+          <div class="exp-pill">Portfolio Management</div>
+          <div class="exp-pill">Lean Practices</div>
+          <div class="exp-pill">Vendor Management</div>
+          <div class="exp-pill">Contract Renewal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-role">Project Engineer</div>
+          <div class="exp-badge">Technical</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-company">Nokia Networks</div>
+          <div class="exp-period">Oct 2011 — Dec 2016 · 5 yrs</div>
+        </div>
+        <p class="exp-desc">Managed Core Network operations for 4G and UMTS technology across VLR, HLR, MGW, and NI-HLR nodes. Analysed performance reports to improve key KPIs — paging success rate, call success rate — and ensured TRAI compliance. Executed system upgrades, configuration changes, and UAT to maintain high customer quality standards. Automated daily health checks using Holistic Integration Tester (HIT) &amp; scripting.</p>
+        <div class="exp-pills">
+          <div class="exp-pill">Nokia MSS/MGW/HLR</div>
+          <div class="exp-pill">4G / UMTS</div>
+          <div class="exp-pill">TRAI Compliance</div>
+          <div class="exp-pill">Network KPIs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-role">NOC Engineer</div>
+          <div class="exp-badge">Operations</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-company">Bharti Airtel</div>
+          <div class="exp-period">Feb 2009 — Sep 2011 · 2 yrs</div>
+        </div>
+        <p class="exp-desc">Monitored system parameters, tracked switch capacity, and managed PGI augmentation across the national network. Analysed network performance to maintain KPIs within agreed SLAs. Coordinated fault resolution with field teams, vendors, TAC, and NOC. Managed end-to-end call routing, equipment diagnostics, and service interruption procedures. Ensured timely CDR back-ups and vendor patch adherence to standard protocols.</p>
+        <div class="exp-pills">
+          <div class="exp-pill">NOC Operations</div>
+          <div class="exp-pill">SLA Management</div>
+          <div class="exp-pill">Fault Resolution</div>
+          <div class="exp-pill">Network Monitoring</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">SKILLS.</h2>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-category-title">AI &amp; Machine Learning</div>
+      <div class="skill-tags">
+        <div class="skill-tag">Generative AI</div>
+        <div class="skill-tag">RAG Engineering</div>
+        <div class="skill-tag">Multi-Agent Systems</div>
+        <div class="skill-tag">LLM Inference</div>
+        <div class="skill-tag">Ollama</div>
+        <div class="skill-tag">ChromaDB</div>
+        <div class="skill-tag">OpenAI Embeddings</div>
+        <div class="skill-tag">Agentic AI</div>
+        <div class="skill-tag">Prompt Engineering</div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-category-title">Development &amp; Tools</div>
+      <div class="skill-tags">
+        <div class="skill-tag">Python</div>
+        <div class="skill-tag">Perl</div>
+        <div class="skill-tag">Pine Script</div>
+        <div class="skill-tag">n8n</div>
+        <div class="skill-tag">Flask</div>
+        <div class="skill-tag">GitHub Copilot</div>
+        <div class="skill-tag">Jira</div>
+        <div class="skill-tag">Wireshark</div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-category-title">Telecom &amp; Infrastructure</div>
+      <div class="skill-tags">
+        <div class="skill-tag">Nokia MSS/MGW/HLR</div>
+        <div class="skill-tag">Siemens</div>
+        <div class="skill-tag">Huawei</div>
+        <div class="skill-tag">TRAI Compliance</div>
+        <div class="skill-tag">TCCCPR</div>
+        <div class="skill-tag">CMTS Audit</div>
+        <div class="skill-tag">Network KPIs</div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-category-title">Delivery &amp; Leadership</div>
+      <div class="skill-tags">
+        <div class="skill-tag">Agile / Scrum</div>
+        <div class="skill-tag">Project Management</div>
+        <div class="skill-tag">Lean Practices</div>
+        <div class="skill-tag">Stakeholder Management</div>
+        <div class="skill-tag">Value Stream Mapping</div>
+        <div class="skill-tag">Team Mentoring</div>
+        <div class="skill-tag">Risk Management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">CERTIFICATIONS.</h2>
+  <div class="cert-grid">
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Microsoft</div>
+      <div class="cert-name">GitHub Copilot</div>
+      <div class="cert-date">Issued Mar 2026</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Google Cloud</div>
+      <div class="cert-name">Introduction to Generative AI</div>
+      <div class="cert-date">Issued Sep 2023</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Genesys</div>
+      <div class="cert-name">Certified Practitioner — Latitude</div>
+      <div class="cert-date">Issued Sep 2022</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Infosys</div>
+      <div class="cert-name">Certified Salesforce Administrator</div>
+      <div class="cert-date">Issued Jun 2021</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Infosys</div>
+      <div class="cert-name">Certified Scrum Master</div>
+      <div class="cert-date">Issued Aug 2020</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Infosys</div>
+      <div class="cert-name">Certified Communications Industry Specialist</div>
+      <div class="cert-date">Issued Jul 2020</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Infosys</div>
+      <div class="cert-name">Global Agile Certification</div>
+      <div class="cert-date">Issued Aug 2020</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Infosys</div>
+      <div class="cert-name">Certified Lean Expert</div>
+      <div class="cert-date">Issued Aug 2020</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Amazon Web Services (AWS)</div>
+      <div class="cert-name">AWS Certified Cloud Practitioner</div>
+      <div class="cert-date">Issued Dec 2019</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Infosys</div>
+      <div class="cert-name">Certified IoT Professional</div>
+      <div class="cert-date">Issued Nov 2019</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">AXELOS Global Best Practice</div>
+      <div class="cert-name">PRINCE2® 2017 Foundation &amp; Practitioner</div>
+      <div class="cert-date">Issued Nov 2019</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Nokia</div>
+      <div class="cert-name">NCSA</div>
+      <div class="cert-date">Issued Sep 2015</div>
+    </div>
+
+    <div class="cert-card fade-up">
+      <div class="cert-issuer">Cisco</div>
+      <div class="cert-name">CCNA</div>
+      <div class="cert-date">Issued Sep 2014</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Hobby Projects · Enterprise Grade</div>
+  <h2 class="section-title">BUILT FOR<br>CURIOSITY,<br>SCALED FOR REAL.</h2>
+  <div class="projects-grid">
+
+    <div class="project-card fade-up">
+      <div class="project-num">01</div>
+      <div class="project-type">Agentic AI Framework</div>
+      <div class="project-name">MULTI AGENT</div>
+      <p class="project-desc">Self-hosted multi-agent AI framework architected from scratch. Features SOUL.md and HEARTBEAT.md configuration files for agent identity and lifecycle management. Deployed on VPS infrastructure.</p>
+      <div class="project-stack">
+        <div class="stack-pill">Multi-Agent</div>
+        <div class="stack-pill">Self-Hosted</div>
+        <div class="stack-pill">Python</div>
+        <div class="stack-pill">OpenRouter</div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">02</div>
+      <div class="project-type">Real-Time Intelligence Dashboard</div>
+      <div class="project-name">TELANGANA MONITOR</div>
+      <p class="project-desc">Real-time state intelligence dashboard for Hyderabad/Telangana targeting government officials. Built with Open-Meteo, Google News RSS, and a Vercel serverless backend for market and commodity data.</p>
+      <div class="project-stack">
+        <div class="stack-pill">Open-Meteo</div>
+        <div class="stack-pill">Google News RSS</div>
+        <div class="stack-pill">Vercel</div>
+        <div class="stack-pill">Serverless</div>
+      </div>
+      <a href="https://subbu0111.github.io/telanganamonitor/" target="_blank" class="project-live-link">View Live →</a>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">03</div>
+      <div class="project-type">On-Premise RAG System · Dec 2024</div>
+      <div class="project-name">CONTACT CENTER RAG</div>
+      <p class="project-desc">Fully on-premise RAG application for a Contact Center engineer chatbot. Ollama for local LLM inference, ChromaDB as vector store, and OpenAI text-embedding-3-large for semantic retrieval. Zero cloud data exposure.</p>
+      <div class="project-stack">
+        <div class="stack-pill">Ollama</div>
+        <div class="stack-pill">ChromaDB</div>
+        <div class="stack-pill">OpenAI Embeddings</div>
+        <div class="stack-pill">On-Premise</div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">04</div>
+      <div class="project-type">Blockchain · Ad-Tech POC</div>
+      <div class="project-name">AD-LEDGER ORACLE</div>
+      <p class="project-desc">Tamper-proof, real-time viewer count verification for OTT ad campaigns — bridging OTT partners and advertisers with blockchain truth. Uses on-chain keccak256 proofs, L2 Base network for sub-cent transactions, and a polling oracle that logs concurrent device counts every 15 seconds during ad slots.</p>
+      <div class="project-stack">
+        <div class="stack-pill">Solidity</div>
+        <div class="stack-pill">Blockchain</div>
+        <div class="stack-pill">Oracle</div>
+        <div class="stack-pill">OTT Ad-Tech</div>
+        <div class="stack-pill">L2 Base</div>
+      </div>
+      <a href="https://subbu0111.github.io/Blockchain-POC/blockchain.html" target="_blank" class="project-live-link">View Live →</a>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">05</div>
+      <div class="project-type">Agentic AI · Agriculture · HuggingFace</div>
+      <div class="project-name">AGRIBLOOM</div>
+      <p class="project-desc">Agentic AI system for smart agriculture — an autonomous agent that analyses crop data, soil conditions, and environmental inputs to generate actionable farming recommendations. Deployed live on HuggingFace Spaces as an interactive demo accessible to anyone.</p>
+      <div class="project-stack">
+        <div class="stack-pill">Agentic AI</div>
+        <div class="stack-pill">HuggingFace</div>
+        <div class="stack-pill">Agriculture</div>
+        <div class="stack-pill">Python</div>
+        <div class="stack-pill">Live</div>
+      </div>
+      <a href="https://huggingface.co/spaces/subbu0111/AgriBloom-Agentic" target="_blank" class="project-live-link">View Live →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="contact-title">LET'S<br><span>BUILD.</span></h2>
+  <p class="contact-sub">Open to consulting engagements, enterprise AI strategy, and building agentic systems.</p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/balasubramaniam-satyamoorthy/" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="mailto:balasubramaniam.s@outlook.in" class="contact-link">Email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="footer-copy">© 2026 Balasubramaniam Satyamoorthy</div>
+  <div class="footer-loc">📍 Hyderabad, India</div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animate() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    cursor.style.left = mx - 6 + 'px';
+    cursor.style.top = my - 6 + 'px';
+    ring.style.left = rx - 20 + 'px';
+    ring.style.top = ry - 20 + 'px';
+    requestAnimationFrame(animate);
+  })();
+
+  // Fade up on scroll — add hidden class via JS so content is visible if JS fails
+  document.querySelectorAll('.fade-up').forEach(el => el.classList.add('animate-hidden'));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        entry.target.classList.remove('animate-hidden');
+      }
+    });
+  });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
